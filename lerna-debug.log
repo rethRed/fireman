@@ -7,34 +7,34 @@
 0 silly argv }
 1 notice cli v8.1.2
 2 verbose packageConfigs Explicit "packages" configuration found in lerna.json. Resolving packages using the configured glob(s): ["packages/*"]
-3 verbose rootPath /home/node/app/leinad-shop
-4 error Error: Unable to create nodes for packages/catalog/package.json using plugin nx/core/package-json-workspaces.
+3 verbose rootPath /home/node/app/fireman
+4 error Error: Unable to create nodes for packages/@common/package.json using plugin nx/core/package-json-workspaces.
 4 error
-4 error 	 Inner Error: Error: ColonExpected in /home/node/app/leinad-shop/packages/catalog/package.json at 14:5
-4 error [0m [90m 12 | [39m      ],[0m
-4 error [0m [90m 13 | [39m      "@public-infra"[0m
-4 error [0m[31m[1m>[22m[39m[90m 14 | [39m    }[0m
-4 error [0m [90m    | [39m    [31m[1m^[22m[39m[0m
-4 error [0m [90m 15 | [39m  },[0m
-4 error [0m [90m 16 | [39m  "scripts": {[0m
-4 error [0m [90m 17 | [39m    "build:publish": "npm-run-all --parallel build:app emit-declarations",[0m
+4 error 	 Inner Error: Error: ColonExpected in /home/node/app/fireman/packages/@common/package.json at 30:3
+4 error   28 |   "dependencies": {
+4 error   29 |     "@fireman/auth"
+4 error > 30 |   },
+4 error      |   ^
+4 error   31 |   "author": "",
+4 error   32 |   "license": "ISC"
+4 error   33 | }
 4 error
-4 error     at parseJson (/home/node/app/leinad-shop/node_modules/nx/src/utils/json.js:25:15)
-4 error     at readJsonFile (/home/node/app/leinad-shop/node_modules/nx/src/utils/fileutils.js:22:37)
-4 error     at createNodeFromPackageJson (/home/node/app/leinad-shop/node_modules/nx/src/plugins/package-json-workspaces/create-nodes.js:47:47)
-4 error     at createNodes (/home/node/app/leinad-shop/node_modules/nx/src/plugins/package-json-workspaces/create-nodes.js:37:28)
-4 error     at buildProjectsConfigurationsFromProjectPathsAndPlugins (/home/node/app/leinad-shop/node_modules/nx/src/project-graph/utils/project-configuration-utils.js:148:29)
-4 error     at createProjectConfigurations (/home/node/app/leinad-shop/node_modules/nx/src/project-graph/utils/retrieve-workspace-files.js:89:156)
-4 error     at _retrieveProjectConfigurations (/home/node/app/leinad-shop/node_modules/nx/src/project-graph/utils/retrieve-workspace-files.js:61:12)
-4 error     at retrieveProjectConfigurations (/home/node/app/leinad-shop/node_modules/nx/src/project-graph/utils/retrieve-workspace-files.js:46:12)
+4 error     at parseJson (/home/node/app/fireman/node_modules/nx/src/utils/json.js:25:15)
+4 error     at readJsonFile (/home/node/app/fireman/node_modules/nx/src/utils/fileutils.js:22:37)
+4 error     at createNodeFromPackageJson (/home/node/app/fireman/node_modules/nx/src/plugins/package-json-workspaces/create-nodes.js:47:47)
+4 error     at createNodes (/home/node/app/fireman/node_modules/nx/src/plugins/package-json-workspaces/create-nodes.js:37:28)
+4 error     at buildProjectsConfigurationsFromProjectPathsAndPlugins (/home/node/app/fireman/node_modules/nx/src/project-graph/utils/project-configuration-utils.js:148:29)
+4 error     at createProjectConfigurations (/home/node/app/fireman/node_modules/nx/src/project-graph/utils/retrieve-workspace-files.js:89:156)
+4 error     at _retrieveProjectConfigurations (/home/node/app/fireman/node_modules/nx/src/project-graph/utils/retrieve-workspace-files.js:61:12)
+4 error     at retrieveProjectConfigurations (/home/node/app/fireman/node_modules/nx/src/project-graph/utils/retrieve-workspace-files.js:46:12)
 4 error     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-4 error     at async buildProjectGraphAndSourceMapsWithoutDaemon (/home/node/app/leinad-shop/node_modules/nx/src/project-graph/project-graph.js:71:69)
-4 error     at buildProjectsConfigurationsFromProjectPathsAndPlugins (/home/node/app/leinad-shop/node_modules/nx/src/project-graph/utils/project-configuration-utils.js:175:27)
-4 error     at createProjectConfigurations (/home/node/app/leinad-shop/node_modules/nx/src/project-graph/utils/retrieve-workspace-files.js:89:156)
-4 error     at _retrieveProjectConfigurations (/home/node/app/leinad-shop/node_modules/nx/src/project-graph/utils/retrieve-workspace-files.js:61:12)
-4 error     at retrieveProjectConfigurations (/home/node/app/leinad-shop/node_modules/nx/src/project-graph/utils/retrieve-workspace-files.js:46:12)
+4 error     at async buildProjectGraphAndSourceMapsWithoutDaemon (/home/node/app/fireman/node_modules/nx/src/project-graph/project-graph.js:71:69)
+4 error     at buildProjectsConfigurationsFromProjectPathsAndPlugins (/home/node/app/fireman/node_modules/nx/src/project-graph/utils/project-configuration-utils.js:175:27)
+4 error     at createProjectConfigurations (/home/node/app/fireman/node_modules/nx/src/project-graph/utils/retrieve-workspace-files.js:89:156)
+4 error     at _retrieveProjectConfigurations (/home/node/app/fireman/node_modules/nx/src/project-graph/utils/retrieve-workspace-files.js:61:12)
+4 error     at retrieveProjectConfigurations (/home/node/app/fireman/node_modules/nx/src/project-graph/utils/retrieve-workspace-files.js:46:12)
 4 error     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-4 error     at async buildProjectGraphAndSourceMapsWithoutDaemon (/home/node/app/leinad-shop/node_modules/nx/src/project-graph/project-graph.js:71:69)
-4 error     at async createProjectGraphAndSourceMapsAsync (/home/node/app/leinad-shop/node_modules/nx/src/project-graph/project-graph.js:136:25)
-4 error     at async createProjectGraphAsync (/home/node/app/leinad-shop/node_modules/nx/src/project-graph/project-graph.js:125:39)
-4 error     at async detectProjects (/home/node/app/leinad-shop/node_modules/lerna/dist/index.js:1563:25)
+4 error     at async buildProjectGraphAndSourceMapsWithoutDaemon (/home/node/app/fireman/node_modules/nx/src/project-graph/project-graph.js:71:69)
+4 error     at async createProjectGraphAndSourceMapsAsync (/home/node/app/fireman/node_modules/nx/src/project-graph/project-graph.js:136:25)
+4 error     at async createProjectGraphAsync (/home/node/app/fireman/node_modules/nx/src/project-graph/project-graph.js:125:39)
+4 error     at async detectProjects (/home/node/app/fireman/node_modules/lerna/dist/index.js:1563:25)

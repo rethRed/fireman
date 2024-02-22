@@ -7,15 +7,15 @@ import { DomainError } from "@fireman/common/errors"
 import bcrypt from "bcryptjs"
 import { CreateUserDto } from "./dtos"
 
-@Entity()
+@Entity("users")
 export class UserEntity extends BaseEntity() {
 
-    @Column({ name: "email" })
+    @Column({ name: "email", unique: true })
     @IsString()
     @IsEmail()
     email!: string
 
-    @Column({ name: "username" })
+    @Column({ name: "username", unique: true })
     @IsString()
     @Length(3, 30)
     username!: string

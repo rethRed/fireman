@@ -25,6 +25,9 @@
     "build:app": "cd src && swc *  --out-dir ../dist --source-maps --config-file ../../../.swcrc",
     "emit-declarations": "tsc -p tsconfig.build.json"
   },
+  "dependencies": {
+    "@fireman/orm": "^1.0.0"
+  },
   "author": "",
   "license": "ISC"
 }
