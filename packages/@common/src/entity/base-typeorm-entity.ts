@@ -7,7 +7,6 @@ import { ClassValidatorProvider } from "../providers/validators"
 
 class Base {
 
-    
 
     @CreateDateColumn({ name: "created_at" })
     createdAt!: Date

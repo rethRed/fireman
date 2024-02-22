@@ -6,7 +6,8 @@
     "./entity": "./dist/entity/index.js",
     "./errors": "./dist/errors/index.js",
     "./logic": "./dist/logic/index.js",
-    "./providers/validators": "./dist/providers/validators/index.js",
+    "./providers-validators": "./dist/providers/validators/index.js",
+    "./providers-typeorm": "./dist/providers/typeorm/index.js",
     "./utils": "./dist/utils/index.js"
   },
   "typesVersions": {
@@ -14,7 +15,8 @@
       "entity": ["./dist/entity/index.d.ts"],
       "errors": ["./dist/errors/index.d.ts"],
       "logic": ["./dist/logic/index.d.ts"],
-      "providers/validators": ["./dist/providers/validators/index.d.ts"],
+      "providers-validators": ["./dist/providers/validators/index.d.ts"],
+      "providers-typeorm": ["./dist/providers/typeorm/index.d.ts"],
       "utils": ["./dist/utils/index.d.ts"]
     }
   },

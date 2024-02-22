@@ -1,1 +1,6 @@
-packages/catalog/tsconfig.build.tsbuildinfo
+packages/auth/tsconfig.build.tsbuildinfo
+packages/@common/tsconfig.build.tsbuildinfo
+
+packages/auth/dist
+packages/@common/dist
+packages/@main/dist

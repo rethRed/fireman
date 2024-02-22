@@ -2,9 +2,13 @@ import { IsEmail, IsString, Length } from "class-validator"
 import { randomUUID } from "crypto"
 import { Column, Entity } from "typeorm"
 import { BaseEntity } from "@fireman/common/entity"
+import { Either, failure, success } from "@fireman/common/logic"
+import { DomainError } from "@fireman/common/errors"
+import bcrypt from "bcryptjs"
+import { CreateUserDto } from "./dtos"
 
 @Entity()
-export class User extends BaseEntity() {
+export class UserEntity extends BaseEntity() {
 
     @Column({ name: "email" })
     @IsString()
@@ -22,25 +26,32 @@ export class User extends BaseEntity() {
     password!: string
 
 
-    constructor(input: User.Input) {
+    constructor(input: CreateUserDto) {
         super()
-        if(!input) return
-        this.email = input.email
-        this.username = input.username
-        this.password = input.password
+        input && this.assignProperties(input)
+    }
+
+    static create(input: CreateUserDto): Either<DomainError, UserEntity> {
+        const user = new UserEntity(input)
+        
+        const validateResult = user.validateAllPropertities()
+        if(validateResult.isFailure()) return failure(validateResult.value) 
+
+        user.hashPassword()
+
+        return success(user)
+    }
+
+    hashPassword() {
+        this.password =  bcrypt.hashSync(this.password, 10)
     }
 
 
 }
 
 
-export namespace User {
+export namespace UserEntity {
     
-    export type Input = {
-        email: string
-        username: string
-        password: string
-    }
     
     export type Props = {
         email: string

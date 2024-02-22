@@ -1,7 +1,10 @@
 import { Module } from '@nestjs/common';
+import { AuthModule } from "@fireman/auth/@public-infra"
 
 @Module({
-  imports: [],
+  imports: [
+    AuthModule
+  ],
   controllers: [],
   providers: [],
 })
