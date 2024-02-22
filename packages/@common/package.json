@@ -3,17 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "exports": {
-    "./@public-apis": "./dist/@public-apis/index.js",
-    "./@public-infra": "./dist/@public-infra/index.js"
+    "./entity": "./dist/entity/index.js",
+    "./errors": "./dist/errors/index.js",
+    "./logic": "./dist/logic/index.js",
+    "./providers/validators": "./dist/providers/validators/index.js",
+    "./utils": "./dist/utils/index.js"
   },
   "typesVersions": {
     "*": {
-      "@public-apis": [
-        "./dist/@public-apis/index.d.ts"
-      ],
-      "@public-infra": [
-        "./dist/@public-infra/index.d.ts"
-      ]
+      "entity": ["./dist/entity/index.d.ts"],
+      "errors": ["./dist/errors/index.d.ts"],
+      "logic": ["./dist/logic/index.d.ts"],
+      "providers/validators": ["./dist/providers/validators/index.d.ts"],
+      "utils": ["./dist/utils/index.d.ts"]
     }
   },
   "scripts": {

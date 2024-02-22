@@ -22,5 +22,8 @@
     "emit-declarations": "tsc -p tsconfig.build.json"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@fireman/common": "^1.0.0"
+  }
 }

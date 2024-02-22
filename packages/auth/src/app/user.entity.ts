@@ -1,12 +1,10 @@
 import { IsEmail, IsString, Length } from "class-validator"
 import { randomUUID } from "crypto"
 import { Column, Entity } from "typeorm"
-
+import { BaseEntity } from "@fireman/common/entity"
 
 @Entity()
-export class User {
-    @Column({ primary: true })
-    id: string = randomUUID()
+export class User extends BaseEntity() {
 
     @Column({ name: "email" })
     @IsString()
@@ -25,6 +23,7 @@ export class User {
 
 
     constructor(input: User.Input) {
+        super()
         if(!input) return
         this.email = input.email
         this.username = input.username
