@@ -6,4 +6,4 @@ dist
 .rabbitmq_data
 .docker/*
 
-packages/catalog/dist
+core

@@ -26,7 +26,6 @@
     "emit-declarations": "tsc -p tsconfig.build.json"
   },
   "dependencies": {
-    "@fireman/orm": "^1.0.0"
   },
   "author": "",
   "license": "ISC"

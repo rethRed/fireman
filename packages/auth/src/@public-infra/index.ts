@@ -1,9 +1,4 @@
 
-import { UserModule } from "../app/user.module"
-import { UserEntity } from "../app/user.entity"
+export { UserModule as AuthModule } from "../app/user.module"
 
-export { UserModule as AuthModule }
-
-export const authTypeormEntities = [
-    UserEntity
-]
+export  { TypeORM } from "../app/@shared" 

@@ -1,10 +1,13 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { TypeORM } from "@fireman/common/providers-typeorm"
+import { setupTypeORM } from './setup-typeorm';
 
 async function bootstrap() {
-  await TypeORM.init()
+
+  await setupTypeORM()
+
   const app = await NestFactory.create(AppModule);
   await app.listen(5000);
 }
 bootstrap();
+//d
