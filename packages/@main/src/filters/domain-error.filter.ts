@@ -7,15 +7,17 @@ export class DomainErrorFilter implements ExceptionFilter {
     catch(exception: DomainError, host: ArgumentsHost) {
         const ctx = host.switchToHttp();
         const response = ctx.getResponse<Response>();
-        let name: string = exception.name;
-        let message: string = exception.message ? exception.message : "An error occurred";
+        const name: string = exception.name;
+        const message: string = exception.message ? exception.message : "An error occurred";
+        const additionalInfo = exception.aditionalInfo ? exception.aditionalInfo : undefined;
 
         response
-            .status(500)
+            .status(400)
             .json({
                 error: {
                     name,
-                    message
+                    message,
+                    ...additionalInfo
                 }
             });
     }
