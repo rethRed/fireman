@@ -8,11 +8,11 @@
   "scripts": {
     "dev": "concurrently \"npm run build:w\" \"npm run start:dev\"",
     "dev:build": "npm run build && npm run dev",
-    "start:dev": "nodemon --watch ./packages/@main/change-tracker/index.txt --exec \"lerna run start:dev --scope @fireman/main\" ",
+    "start:dev": "lerna run start:dev --scope @fireman/main ",
     "build:prod": "npm run build && npm run build -w=@fireman/main",
     "build": "lerna run build:publish --parallel",
     "build:w": "lerna  watch --ignore @fireman/main -- npm run build:w:command",
-    "build:w:command": "lerna run build:publish --parallel --since && npm run trigger-file-change-tracker -w=@fireman/main",
+    "build:w:command": "lerna run build:publish --parallel --since && touch packages/@main/src/main.ts",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev:skip-type-check": "nest start --watch ",
