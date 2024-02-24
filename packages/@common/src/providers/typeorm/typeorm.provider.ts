@@ -38,9 +38,9 @@ export class TypeOrmFactory {
             username: dbInfo.user,
             password: dbInfo.password,
             database: dbInfo.dbName,
-            entities: [ ...options?.entities as any ] || [],
+            entities: options?.entities ? [ ...options?.entities as any ] : [],
             synchronize: options?.synchronize || false,
-            subscribers: [ ...options?.subscribers as any ] || [],
+            subscribers: options?.subscribers ?  [  ...options?.subscribers as any ] : [],
             charset: "utf8mb4",
         })        
         return appDataSource

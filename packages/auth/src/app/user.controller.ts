@@ -13,6 +13,9 @@ export class UserController {
     async signup(
         @Body() createUserDto: CreateUserDto
     ) {
-        return this.userService.signup(createUserDto)
+        return await this.userService.signup(createUserDto).then(res => {
+            if(res.isFailure()) throw res.value
+            return res.value
+        })
     }
 } 

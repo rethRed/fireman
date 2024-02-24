@@ -11,6 +11,7 @@
     "start:dev": "lerna run start:dev --scope @fireman/main",
     "build:prod": "npm run build && npm run build -w=@fireman/main",
     "build": "lerna run build:publish --parallel",
+    "prebuild:w": "npm run build",
     "build:w": "lerna  watch --ignore @fireman/main -- lerna run build:publish --parallel  --since ",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
