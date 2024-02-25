@@ -20,7 +20,7 @@ export class ClassValidatorAdapter {
 
 export class ClassValidatorProvider {
 
-    static validateAll<T extends object>(entity: T): Either<DomainError, string> {
+    static validateAll<T extends object>(entity: T): Either<DomainError, void> {
         const errors = validateSync(entity);
         if (errors.length > 0) {
             let error = errors[0];
@@ -30,10 +30,10 @@ export class ClassValidatorProvider {
             const name = error.constraints![firstConstraintKey];
             return failure(ClassValidatorAdapter.toDomainError(name));
         }
-        return success();
+        return success(undefined);
     }
 
-    static validateProperties<T extends object>(entity: T, propertyNames: string[]): Either<DomainError, string> {
+    static validateProperties<T extends object>(entity: T, propertyNames: string[]): Either<DomainError, void> {
 
         const errors = validateSync(entity, );
 
@@ -45,10 +45,10 @@ export class ClassValidatorProvider {
             return failure(ClassValidatorAdapter.toDomainError(name));
         }
 
-        return success();
+        return success(undefined);
     }
 
-    static validateAllPropertiesExcept<T extends object>(entity: T, propertyNames: string[]): Either<DomainError, string> {
+    static validateAllPropertiesExcept<T extends object>(entity: T, propertyNames: string[]): Either<DomainError, void> {
         
         const errors = validateSync(entity);
 
@@ -60,6 +60,6 @@ export class ClassValidatorProvider {
             return failure(ClassValidatorAdapter.toDomainError(name));
         }
 
-        return success();
+        return success(undefined);
     }
 }

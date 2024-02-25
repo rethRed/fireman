@@ -21,7 +21,7 @@ export class FiremanService {
 
         await TypeORM.em.save(fireman)
 
-        return success()
+        return success(undefined)
     }
 
     async update(userId: string, fullname: string): Promise<Either<DomainError, void>> {
@@ -35,6 +35,6 @@ export class FiremanService {
 
         await TypeORM.em.save(fireman)
 
-        return success()
+        return success(undefined)
     }
 }

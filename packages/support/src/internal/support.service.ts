@@ -21,7 +21,7 @@ export class SupportService {
 
         await TypeORM.em.save(user)
 
-        return success()
+        return success(undefined)
     }
 
     async updateSupport(userId: string, fullname: string): Promise<Either<DomainError, void>> {
@@ -35,6 +35,6 @@ export class SupportService {
 
         await TypeORM.em.save(user)
 
-        return success()
+        return success(undefined)
     }
 }

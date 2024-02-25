@@ -33,7 +33,7 @@ class Base {
         const validationResult = ClassValidatorProvider.validateAll(this)
         if (validationResult.isFailure()) return failure(validationResult.value)
 
-        return success()
+        return success(undefined)
     }
 
     validateProperties(propertyNames: (keyof this)[]): Either<DomainError, void> {
@@ -41,14 +41,14 @@ class Base {
         const validationResult = ClassValidatorProvider.validateProperties(this, propertyNames as any)
         if (validationResult.isFailure()) return failure(validationResult.value)
 
-        return success()
+        return success(undefined)
     }
 
     validateAllPropertiesExcept(propertyNames: (keyof this)[]): Either<DomainError, void> {
         const validationResult = ClassValidatorProvider.validateAllPropertiesExcept(this, propertyNames as any)
         if (validationResult.isFailure()) return failure(validationResult.value)
 
-        return success()
+        return success(undefined)
     }
 
 
