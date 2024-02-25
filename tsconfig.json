@@ -31,6 +31,9 @@
         "@fireman/*": [
           "./fireman/src/*"
         ],
+        "@emergency-call/*": [
+          "./emergency-call/src/*"
+        ],
     },
   }
 }

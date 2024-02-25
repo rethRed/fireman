@@ -38,3 +38,16 @@ export class EmergencyCallIsAlreadyFinishedError extends DomainError {
         super()
     }
 } 
+
+export class EmergencyCallIsAlreadyCancelledError extends DomainError {
+    constructor() {
+        super()
+    }
+} 
+
+
+export class EmergencyCallIsAlreadyHasSupportError extends DomainError {
+    constructor() {
+        super()
+    }
+} 

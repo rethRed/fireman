@@ -5,7 +5,9 @@ import { DomainError } from "@common/errors"
 import { Either, failure, success } from "@common/logic"
 import { SupportIdValueObject, UserIdValueObject } from "./value-objects"
 import { 
+    EmergencyCallIsAlreadyCancelledError,
     EmergencyCallIsAlreadyFinishedError,
+    EmergencyCallIsAlreadyHasSupportError,
     EmergencyCallIsAlreadyInAttendanceError, 
     EmergencyCallIsNotInAttendanceError, 
     FirefighterRequestAlreadyOpenedError, 
@@ -47,6 +49,7 @@ export class EmergencyCallAggregate extends BaseAggregateRoot<EmergencyCallAggre
     }
 
     assumeEmergencyCall(supportId: SupportIdValueObject): Either<DomainError, void> {
+        if(this.hasSupport()) return failure(new EmergencyCallIsAlreadyHasSupportError())
         if(!this.isWaitingSupport()) return failure(new EmergencyCallIsAlreadyInAttendanceError())
         this._props.status = StatusEnum.IN_ATTENDANCE
         this._props.supportId = supportId
@@ -57,6 +60,13 @@ export class EmergencyCallAggregate extends BaseAggregateRoot<EmergencyCallAggre
         if(this.isFinished()) return failure(new EmergencyCallIsAlreadyFinishedError())
         if(!this.isInAttendance()) return failure(new EmergencyCallIsNotInAttendanceError())
         this._props.status = StatusEnum.FINISHED
+        return success(undefined)
+    }
+
+    cancelEmergencyCall(): Either<DomainError, void> {
+        if(this.isCancelled()) return failure(new EmergencyCallIsAlreadyCancelledError())
+        if(this.isFinished()) return failure(new EmergencyCallIsAlreadyFinishedError())
+        this._props.status = StatusEnum.CANCELLED
         return success(undefined)
     }
 
@@ -78,6 +88,10 @@ export class EmergencyCallAggregate extends BaseAggregateRoot<EmergencyCallAggre
 
     isFinished(): boolean {
         return this._props.status === StatusEnum.FINISHED
+    }
+
+    hasSupport(): boolean {
+        return !!this._props.supportId
     }
 
     toJSON(): EmergencyCallAggregate.PropsJSON {
