@@ -1,4 +1,4 @@
-import { AuthGuardInput } from "@auth/@public-infra"
+import { AuthGuard, IsAdminGuard } from "@auth/@public-infra/guards"
 import { Reflector } from "@nestjs/core"
 
 export type PropertyConfig = {
@@ -11,6 +11,6 @@ export const AppGuardOptions = Reflector.createDecorator<PropertyConfigMap>()
 export type PropertyConfigMap = {
 
 
-    authGuard?: AuthGuardInput
-
+    authGuard?: AuthGuard.Input
+    isAdminGuard?: IsAdminGuard.Input
 }
