@@ -1,4 +1,9 @@
 
-export { UserModule as AuthModule } from "../app/user.module"
+export { UserModule as AuthModule } from "../internal/user.module"
 
-export  { TypeORM } from "../app/@shared" 
+
+import { AuthGuard } from "./guards"
+export { AuthGuard }
+
+export type AuthGuardInput = AuthGuard.Input
+

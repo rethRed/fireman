@@ -22,15 +22,16 @@ function getDbInfoFromUrl(dbUrl: string): DbInfoInterface {
     };
 }
 
-const dbInfo = getDbInfoFromUrl(process.env.MYSQL_DATABASE_URL!);
 
 
 
-
-export class TypeOrmFactory {
+export class TypeORM {
     
+    private static _value: DataSource;
     
-    static createDataSource(options?: Partial<DataSourceOptions>): DataSource {
+    static async init() {
+        const dbInfo = getDbInfoFromUrl(process.env.MYSQL_DATABASE_URL!);
+        
         const appDataSource = new DataSource({
             type: 'mysql',
             host: dbInfo.host,
@@ -38,15 +39,42 @@ export class TypeOrmFactory {
             username: dbInfo.user,
             password: dbInfo.password,
             database: dbInfo.dbName,
-            entities: options?.entities ? [ ...options?.entities as any ] : [],
-            synchronize: options?.synchronize || false,
-            subscribers: options?.subscribers ?  [  ...options?.subscribers as any ] : [],
+            entities: [
+                join(__dirname,"../../../../", '**', '*.entity.{ts,js}')
+            ],
+            synchronize: false,
+            subscribers: [
+                
+            ],
             charset: "utf8mb4",
-        })        
-        return appDataSource
+        })
+        
+        await appDataSource.initialize()
 
+        console.log("TypeORM initialized",);
+
+        this._value = appDataSource;
     }
 
+    static get em(): EntityManager {
+        return this._value.manager;
+    }
 
+    static get dataSource(): DataSource {
+        return this._value;
+    }
 
+    static executeWhenInited(callback: () => any) {
+        if (this._value) {
+            return callback();
+        }
+        return new Promise((resolve) => {
+            const interval = setInterval(() => {
+                if (this._value) {
+                    clearInterval(interval);
+                    resolve(callback());
+                }
+            }, 50)
+        });
+    }
 }

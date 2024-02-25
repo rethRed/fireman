@@ -8,11 +8,17 @@
           "decorators": true,
           "dynamicImport": true
         },
-      "baseUrl": "src",
+      "baseUrl": "packages",
       "paths": {
-        "@/*": [
-          "*"
-        ]
+          "@api/nestjs/*": [
+              "./api/nestjs/src/*"
+          ],
+          "@auth/*": [
+            "./auth/src/*"
+          ],
+          "@common/*": [
+            "./@common/src/*"
+          ]
       },
       "keepClassNames": true,
       "transform": {
@@ -20,5 +26,6 @@
           "decoratorMetadata": true
         }
   },
+  "exclude": [ "dist/**/*" ],
   "minify": false
 }

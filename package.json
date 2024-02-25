@@ -6,25 +6,19 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "concurrently \"npm run build:w\" \"npm run start:dev\"",
-    "dev:build": "npm run build && npm run dev",
-    "start:dev": "lerna run start:dev --scope @fireman/main ",
-    "build:prod": "npm run build && npm run build -w=@fireman/main",
-    "build": "lerna run build:publish --parallel",
-    "build:w": "lerna  watch --ignore @fireman/main -- npm run build:w:command",
-    "build:w:command": "lerna run build:publish --parallel --since && touch packages/@main/src/main.ts",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start:dev": "nest start --watch",
     "start": "nest start",
     "start:dev:skip-type-check": "nest start --watch ",
     "start:debug": "nest start --debug --watch",
+    "build": "nest build",
     "start:prod": "node dist/main",
+    
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json",
-    "new-version": "lerna version --conventional-commits --yes"
+    "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "workspaces": [
     "packages/*"
@@ -47,7 +41,7 @@
     "concurrently": "^8.2.2",
     "cookie-parser": "^1.4.6",
     "discord-oauth2": "^2.12.1",
-    "dotenv": "^16.4.1",
+    "dotenv": "^16.4.5",
     "geoip-lite": "^1.4.9",
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",

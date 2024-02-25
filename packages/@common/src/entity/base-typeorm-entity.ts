@@ -88,7 +88,7 @@ type ResultType<T extends OptionsInput> =
     T extends {} ? typeof WithVersionAndId :
     typeof Base;
 
-export function BaseEntity<T extends OptionsInput>(options?: T): ResultType<T> {
+export function BaseTypeormEntity<T extends OptionsInput>(options?: T): ResultType<T> {
     const { withId = true, withVersion = true } = options ?? {};
 
     if (withId === true && withVersion === true) {

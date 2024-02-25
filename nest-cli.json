@@ -1,9 +1,12 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src",
+  "sourceRoot": "packages",
+  "entryFile": "api/nestjs/src/main",
+  
   "compilerOptions": {
     "deleteOutDir": true,
-    "builder": "swc"
+    "builder": "swc",
+    "tsConfigPath": "packages/api/nestjs/tsconfig.json"
   }
 }
