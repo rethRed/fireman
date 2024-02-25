@@ -10,14 +10,14 @@
         },
       "baseUrl": "packages",
       "paths": {
+          "@common/*": [
+            "./@common/src/*"
+          ],
           "@api/nestjs/*": [
               "./api/nestjs/src/*"
           ],
           "@auth/*": [
             "./auth/src/*"
-          ],
-          "@common/*": [
-            "./@common/src/*"
           ]
       },
       "keepClassNames": true,

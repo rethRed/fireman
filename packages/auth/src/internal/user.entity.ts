@@ -6,7 +6,8 @@ import { Either, failure, success } from "@common/logic"
 import { DomainError } from "@common/errors"
 import bcrypt from "bcryptjs"
 import { CreateUserDto } from "./dtos"
-//dddddddkh
+
+
 @Entity("users")
 export class UserEntity extends BaseTypeormEntity() {
 
@@ -44,6 +45,10 @@ export class UserEntity extends BaseTypeormEntity() {
 
     hashPassword() {
         this.password =  bcrypt.hashSync(this.password, 10)
+    }
+
+    comparePassword(plainTextPassword: string): boolean {
+        return bcrypt.compareSync(plainTextPassword, this.password)
     }
 
 

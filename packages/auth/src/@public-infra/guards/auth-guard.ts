@@ -3,20 +3,18 @@ import { CanActivate, ExecutionContext, Inject, Injectable } from "@nestjs/commo
 import { Request, Response } from "express";
 import { Reflector } from "@nestjs/core";
 import { InvalidTokenError } from "./errors";
-import { PropertyConfigMap, PropertyConfig, } from "@common/guards"
+import { PropertyConfig, } from "@common/guards/config-map"
+import { JwtService } from "@auth/internal/jwt.service";
 type User = {
     id: string
 }
 
-type Store = {
-    id: string
-}
+
 
 declare global {
     namespace Express {
         interface Request {
             currentUser: User;
-            currentStore: Store
         }
     }
 }
@@ -25,6 +23,7 @@ export class AuthGuard implements CanActivate {
 
     constructor(
         private reflector: Reflector,
+        private readonly jwtService: JwtService
     ) { }
 
     async canActivate(context: ExecutionContext): Promise<boolean> {
@@ -36,11 +35,12 @@ export class AuthGuard implements CanActivate {
         let accessToken: string = req.headers?.authorization ?? ""
         accessToken = accessToken.replace("Bearer ", "")
 
-        if(false) throw new InvalidTokenError()
+        const user = await this.jwtService.verifyAccessToken(accessToken)
 
+        if(!user) throw new InvalidTokenError()
 
         req.currentUser = {
-            id: "result.value.id"
+            id: user.userId
         }
 
         return true

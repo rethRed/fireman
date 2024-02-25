@@ -4,6 +4,7 @@
     "./dist",
   ],
   "compilerOptions": {
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "incremental": true
   }
 }

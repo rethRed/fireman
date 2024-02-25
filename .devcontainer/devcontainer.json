@@ -44,7 +44,10 @@
 			"settings": {
 				"typescript.tsserver.experimental.enableProjectDiagnostics": true
 
-			}
+			},
+			"extensions": [
+				"chakrounanas.turbo-console-log"
+			]
 			
 		}
 	 }

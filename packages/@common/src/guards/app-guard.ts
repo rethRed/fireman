@@ -1,7 +1,7 @@
 import { CanActivate, Injectable } from "@nestjs/common";
 import { PropertyConfigMap } from "./config-map";
 import { Reflector } from "@nestjs/core";
-import { AuthGuard } from "@auth/@public-infra";
+import { AuthGuard } from "@auth/@public-infra/guards";
 
 export { PropertyConfig, PropertyConfigMap } from "./config-map"
 

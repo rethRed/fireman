@@ -8,11 +8,9 @@ import { AppModule } from './app.module';
 import { DomainErrorFilter, HttpExceptionFilter } from './filters';
 import { TypeORM } from '@common/providers/typeorm';
 
-const { dirname } = require('path');
-const appDir = dirname(require.main!.filename);
 
 async function bootstrap() {
-  console.log(process.cwd())
+
 
   await TypeORM.init()
 

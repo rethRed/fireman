@@ -14,3 +14,17 @@ export class UsernameAlreadyInUseError extends HttpException {
         this.name = this.constructor.name
     }
 }
+
+export class InvalidCredentialsError extends HttpException {
+    constructor() {
+        super("credentials are invalid", 403)
+        this.name = this.constructor.name
+    }
+}
+
+export class UserNotFoundError extends HttpException {
+    constructor() {
+        super("user was not found", 404)
+        this.name = this.constructor.name
+    }
+}
