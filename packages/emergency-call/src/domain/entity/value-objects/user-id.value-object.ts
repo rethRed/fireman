@@ -4,7 +4,7 @@ import { BaseValueObject } from "@common/value-objects";
 import { InvalidIdError } from "../errors";
 
 export class UserIdValueObject extends BaseValueObject<string> {
-    private constructor(props: string) {
+    constructor(props: string) {
         super(props)
     }
 
