@@ -7,3 +7,11 @@ export class InvalidTokenError extends HttpException {
         this.name = this.constructor.name
     }
 } 
+
+
+export class InvalidAdminTokenError extends HttpException {
+    constructor() {
+        super("The admin token is invalid", 403)
+        this.name = this.constructor.name
+    }
+} 

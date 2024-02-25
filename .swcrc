@@ -18,6 +18,12 @@
           ],
           "@auth/*": [
             "./auth/src/*"
+          ],
+          "@support/*": [
+            "./support/src/*"
+          ],
+          "@fireman/*": [
+            "./fireman/src/*"
           ]
       },
       "keepClassNames": true,

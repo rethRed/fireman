@@ -2,35 +2,35 @@
 import { CanActivate, ExecutionContext, Inject, Injectable } from "@nestjs/common";
 import { Request, Response } from "express";
 import { Reflector } from "@nestjs/core";
-import { InvalidAdminTokenError, InvalidTokenError } from "./errors";
+import { UserNotSupportError } from "./errors";
 import { AppGuardOptions, PropertyConfig, PropertyConfigMap, } from "@common/guards/config-map"
 import { GetParamFrom } from "@common/guards/helper";
+import { TypeORM } from "@common/providers/typeorm";
+import { SupportEntity } from "@support/internal/support.entity";
 
 @Injectable()
-export class IsAdminGuard implements CanActivate {
+export class IsSupportGuard implements CanActivate {
 
     constructor(
         private reflector: Reflector,
-   ) { }
+    ) { }
 
     async canActivate(context: ExecutionContext): Promise<boolean> {
-        const input = this.reflector.get<PropertyConfigMap>(AppGuardOptions, context.getHandler())
 
         const ctx = context.switchToHttp();
         const req: Request = ctx.getRequest<Request>();
 
-        const accessToken: string | undefined = await GetParamFrom.request(
-            input?.isAdminGuard?.paramName ?? "adminToken", 
-            input?.isAdminGuard?.propertyAccess ?? "headers", req)
-
-        if(accessToken !== process.env.ADMIN_TOKEN) throw new InvalidAdminTokenError()
-
-        return true 
+        const user = await TypeORM.em.findOneBy(SupportEntity, {
+            id: req.currentUser.id
+        })
+        if(!user?.isSupport) throw new UserNotSupportError()
+  
+        return true
     }
 
 }
 
-export namespace IsAdminGuard {
+export namespace IsSupportGuard {
 
     export type Input = PropertyConfig & {}
 }
